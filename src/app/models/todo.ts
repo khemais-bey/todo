@@ -1,0 +1,5 @@
+export class Todo {
+  content : String = '';
+  completed : boolean = false;
+  description : String = '';
+}

@@ -1,0 +1,33 @@
+<div class="todos">
+	<form [formGroup]="todoForm" (submit)="addTodo()">
+		<input
+    lines="none"
+			type="text"
+			name="inputTodo"
+			placeholder="Entrer le nom todo..."
+			class="todo-input"
+      formControlName="inputTodo"
+		/>
+    <input
+      lines="none"
+			type="text"
+			name="inputTodo"
+			placeholder="Description"
+			class="todo-input"
+      formControlName="inputDescription"
+		/>
+		<button   [disabled]="todoForm.invalid"
+    [ngClass]="{
+      'todo-submit-disabled':todoForm.invalid }"
+      type="submit"  class="todo-submit">Ajouter todo
+    </button>
+
+	<div *ngFor="let todo of todos; let i = index;" class="todo {{ (todo.completed ? 'done' : '') }}">
+		<div class="id"  [ngClass]="{'isDone':todo.completed}">{{ i+1 }}</div>
+		<div  [ngClass]="{'isDone':todo.completed}" (click)="displayDescription()">{{ todo.content }}</div>
+    <div  *ngIf="isDescription" class="content" >{{ todo.description }}</div>
+    <div class="content" >{{ todo.completed ? 'terminé' : 'en cours' }}</div>
+    <mat-checkbox (click)="toggleDone(i)"></mat-checkbox>
+  </div>
+</form>
+</div>
