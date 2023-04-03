@@ -25,7 +25,7 @@
 	<div *ngFor="let todo of todos; let i = index;" class="todo {{ (todo.completed ? 'done' : '') }}">
 		<div class="id"  [ngClass]="{'isDone':todo.completed}">{{ i+1 }}</div>
 		<div  [ngClass]="{'isDone':todo.completed}" (click)="displayDescription()">{{ todo.content }}</div>
-    <div  *ngIf="isDescription" class="content" >{{ todo.description }}</div>
+    <div  *ngIf="isDescription"  [ngClass]="{'isDone':todo.completed}" class="content" >{{ todo.description }}</div>
     <div class="content" >{{ todo.completed ? 'terminé' : 'en cours' }}</div>
     <mat-checkbox (click)="toggleDone(i)"></mat-checkbox>
   </div>
